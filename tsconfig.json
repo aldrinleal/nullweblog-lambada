@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "moduleResolution": "classic",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "outDir": "target/javascript"
+    },
+    "filesGlob": [
+        "src/main/typescript/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
+}

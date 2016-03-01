@@ -5,8 +5,6 @@
 
 import AWS = require("aws-sdk");
 
-var lambdaClient = new AWS.Lambda();
-
 AWS.config.region = 'us-east-1';
 
 if (process.env['COGNITO_POOL_ID']) {
@@ -14,6 +12,8 @@ if (process.env['COGNITO_POOL_ID']) {
     IdentityPoolId: process.env['COGNITO_POOL_ID']
   });
 }
+
+var lambdaClient = new AWS.Lambda();
 
 function createBlogPost(a: Nullweblog.CreatePostArgs, callback) {
   var args = <AWS.Lambda.InvocationRequest> {

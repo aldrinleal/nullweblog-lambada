@@ -8,19 +8,6 @@ var lambdaClient = new AWS.Lambda({
   region: 'us-east-1'
 });
 
-declare namespace Nullweblog {
-    interface CreatePostArgs {
-        title: string;
-        content: string;
-        tags: string[];
-    }
-
-    interface CreatePostResult {
-        postSlug: string;
-        lastUpdated: Date;
-    }
-}
-
 function createBlogPost(a: Nullweblog.CreatePostArgs, callback) {
   var args = <AWS.Lambda.InvocationRequest> {
     FunctionName: "nwl_create_post:DEV",

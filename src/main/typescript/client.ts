@@ -1,12 +1,19 @@
 ///<reference path="../../../typings/main.d.ts"/>
 ///<reference path="../../../node_modules/aws-sdk-typescript/output/typings/aws-lambda.d.ts"/>
+///<reference path="../../../node_modules/aws-sdk-typescript/output/typings/aws-cognito-identity.d.ts"/>
 ///<reference path="./Nullweblog.d.ts"/>
 
 import AWS = require("aws-sdk");
 
-var lambdaClient = new AWS.Lambda({
-  region: 'us-east-1'
-});
+var lambdaClient = new AWS.Lambda();
+
+AWS.config.region = 'us-east-1';
+
+if (process.env['COGNITO_POOL_ID']) {
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: process.env['COGNITO_POOL_ID']
+  });
+}
 
 function createBlogPost(a: Nullweblog.CreatePostArgs, callback) {
   var args = <AWS.Lambda.InvocationRequest> {

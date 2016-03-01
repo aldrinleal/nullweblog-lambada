@@ -17,9 +17,9 @@ function createBlogPost(a: Nullweblog.CreatePostArgs, callback) {
   lambdaClient.invoke(args, callback);
 }
 
-var newPost = <Nullweblog.CreatePostArgs> {
-  title: 'Hello, World!'
-}
+var newPost = <Nullweblog.CreatePostArgs>{
+    title: 'Hello, World!'
+};
 
 createBlogPost(newPost, (err, data) => {
   console.log("err: ", err, ", data:", data);
